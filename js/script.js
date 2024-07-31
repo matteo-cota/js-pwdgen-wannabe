@@ -11,31 +11,23 @@ console.log('JS OK');
     6. Visualizzare la password generata nella pagina HTML.
 */
 
+// # fase di preparazione 
+const suffix = '21';
+
 // Selezioniamo il form e il paragrafo dove visualizzeremo il risultato
-const form = document.getElementById('userForm');
-const result = document.getElementById('result');
+const resultelement = document.getElementById('result');
+console.log(resultelement);
 
-// Aggiungiamo un event listener al form per intercettare il submit
-form.addEventListener('submit', function (event) {
-    // Preveniamo il comportamento di default del form (refresh della pagina)
-    event.preventDefault();
 
-    // Preleviamo i valori inseriti dall'utente
-    const name = document.getElementById('name').value.trim();
-    const surname = document.getElementById('surname').value.trim();
-    const color = document.getElementById('color').value.trim();
+// Preleviamo i valori 
+const fristname = prompt('qual è il tuo nome?', 'Matteo');
+const surname = prompt('qual è il tuo congnome?', 'Cota');
+const color = prompt('qual è il tuo colore preferito?', 'Rosso');
+console.log(fristname, + surname, color);
 
-    // Verifichiamo i valori prelevati
-    console.log('Nome:', name);
-    console.log('Cognome:', surname);
-    console.log('Colore Preferito:', color);
+// Verifichiamo i valori prelevati
+const password = fristname + surname + color + suffix;
+console.log(password);
 
-    // Generiamo la password concatenando i valori e '21'
-    const password = name + surname + color + '21';
-
-    // Verifichiamo la password generata
-    console.log('Password Generata:', password);
-
-    // Visualizziamo la password nella pagina HTML
-    result.textContent = password;
-});
+// Visualizziamo la password nella pagina HTML
+result.innerHTML = `La tua password è: <i>${password}</i>`;
